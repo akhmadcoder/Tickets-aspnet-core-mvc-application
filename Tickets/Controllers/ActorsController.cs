@@ -27,13 +27,9 @@ namespace Tickets.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FullName,ProfilePictureUrl,Bio")]Actor actor) 
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View(actor);
-            //}
-
             await _service.AddAsync(actor);
             return RedirectToAction(nameof(Index));
         }
@@ -57,13 +53,9 @@ namespace Tickets.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureUrl,Bio")] Actor actor)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View(actor);
-            //}
-
             await _service.UpdateAsync(id, actor);
             return RedirectToAction(nameof(Index));
         }
