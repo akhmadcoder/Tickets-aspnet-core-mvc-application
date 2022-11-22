@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tickets.Data.Services
 {
-    public interface IActorsService:IEntityBaseRepository<Actor>
+    public interface IProducersService:IEntityBaseRepository<Producer>
     {
     }
 }
