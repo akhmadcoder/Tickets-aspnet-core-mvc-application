@@ -1,10 +1,13 @@
-﻿using Tickets.Models;
+﻿using System.Linq.Expressions;
+using Tickets.Models;
 
 namespace Tickets.Data.Base
 {
     public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {
         Task<IEnumerable<T>> GetAllAsync();
+
+        Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties);
 
         Task<T> GetByIdAsync(int id);
 
